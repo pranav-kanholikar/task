@@ -57,3 +57,8 @@ gem "twitter-bootstrap-rails"
 
 gem 'devise'
 
+gem 'pundit'
+
+gem 'delayed_job_active_record'
+
+

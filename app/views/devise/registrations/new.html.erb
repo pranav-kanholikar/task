@@ -32,6 +32,15 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <select name="user[role]">
+      <option value="">Please select</option>
+      <option value="Admin" selected="selected">Admin</option>
+      <option value="User">User</option>
+      <option value="student">student</option>
+    </select>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

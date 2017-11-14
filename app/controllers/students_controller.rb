@@ -5,6 +5,7 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
+    authorize @students
   end
 
   # GET /students/1
@@ -15,6 +16,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
+    authorize @student
   end
 
   # GET /students/1/edit
@@ -25,10 +27,12 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @student = Student.new(student_params)
+    @student.user = current_user
+    authorize @student
 
     respond_to do |format|
       if @student.save
-        UserMailer.welcome_email(@student, "ushakrn10@gmail.com").deliver
+        UserMailer.welcome_email(@student).delay.deliver
         flash[:notice]= "Student created sucessfully"
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }
@@ -69,10 +73,11 @@ class StudentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_student
       @student = Student.find(params[:id])
+      authorize @student
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :age)
+      params.require(:student).permit(:name, :age, :user_id)
     end
 end

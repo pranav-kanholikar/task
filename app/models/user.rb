@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-         validates :fname, presence: true
+         
+
+         has_many :students
 
          
 end

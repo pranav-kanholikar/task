@@ -10,13 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113092805) do
+ActiveRecord::Schema.define(version: 20171114103417) do
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
 
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_students_on_user_id"
   end
 
   create_table "subjects", force: :cascade do |t|
@@ -43,6 +60,7 @@ ActiveRecord::Schema.define(version: 20171113092805) do
     t.datetime "updated_at", null: false
     t.string "fname"
     t.string "lname"
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
