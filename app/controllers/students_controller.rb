@@ -15,6 +15,7 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
+    
     @student = Student.new
     authorize @student
   end
@@ -81,3 +82,4 @@ class StudentsController < ApplicationController
       params.require(:student).permit(:name, :age, :user_id)
     end
 end
+

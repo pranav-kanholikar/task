@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+
+  resources :colleges
+
   devise_for :users, :controllers => {registrations: 'registrations'}
   resources :students do
   resources :subjects

@@ -61,4 +61,8 @@ gem 'pundit'
 
 gem 'delayed_job_active_record'
 
+gem 'whenever', '~> 0.9.4', :require => false
+
+gem 'simple_form'
+
 

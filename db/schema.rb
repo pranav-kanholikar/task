@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171114103417) do
+ActiveRecord::Schema.define(version: 20171115105745) do
+
+  create_table "colleges", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "streat"
+    t.string "department"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
@@ -27,12 +36,21 @@ ActiveRecord::Schema.define(version: 20171114103417) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
+  create_table "schools", force: :cascade do |t|
+    t.string "sname"
+    t.string "principle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.integer "age"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "imageable_id"
+    t.string "imageable_type"
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 

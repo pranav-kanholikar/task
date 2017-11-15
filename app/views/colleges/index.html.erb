@@ -1,0 +1,17 @@
+
+<table class="table table-striped">
+<tr>
+    <th>College Name</th>
+    <th>Address</th>
+    <th>Street/landmark</th>
+    <th>Department</th>
+</tr>
+    <% @college.each do |clg| %>
+<tr>
+    <td><%= clg.name %></td>
+    <td><%= clg.address %></td>
+    <td><%= clg.streat %></td>
+    <td><%= clg.department %></td>
+</tr>
+    <% end %>
+</table>

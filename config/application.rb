@@ -7,8 +7,6 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 
-config.active_job.queue_adapter = :delayed_job
-
 module Tasks
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
