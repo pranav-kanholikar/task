@@ -4,7 +4,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @students = Student.all
+    @students = Student.paginate(:page => params[:page], :per_page => 5)
     authorize @students
   end
 
@@ -33,7 +33,7 @@ class StudentsController < ApplicationController
 
     respond_to do |format|
       if @student.save
-        UserMailer.welcome_email(@student).delay.deliver
+        # UserMailer.welcome_email(@student).delay.deliver
         flash[:notice]= "Student created sucessfully"
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render :show, status: :created, location: @student }

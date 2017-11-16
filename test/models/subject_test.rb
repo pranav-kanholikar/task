@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: subjects
+#
+#  id          :integer          not null, primary key
+#  name        :string
+#  publication :string
+#  teacher     :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  student_id  :integer
+#
+
 require 'test_helper'
 
 class SubjectTest < ActiveSupport::TestCase

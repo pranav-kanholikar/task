@@ -44,3 +44,5 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_student_path,
             :class => 'btn btn-primary' %>
+<br></br>
+           <%= will_paginate @students, renderer: BootstrapPagination::Rails %>
